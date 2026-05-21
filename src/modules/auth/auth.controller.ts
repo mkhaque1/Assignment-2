@@ -23,6 +23,13 @@ export const signup = async (req: Request, res: Response): Promise<void> => {
     return;
   }
 
+  // Basic email format check
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  if (!emailRegex.test(email)) {
+    sendError(res, StatusCodes.BAD_REQUEST, 'Invalid email format');
+    return;
+  }
+
   // Validate role if provided
   const validRoles = ['contributor', 'maintainer'];
   const userRole = role && validRoles.includes(role) ? role : 'contributor';
