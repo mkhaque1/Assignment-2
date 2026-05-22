@@ -8,9 +8,8 @@ const app: Application = express();
 
 app.use(express.json());
 
-// Health check — useful to test if server is running
 app.get('/', (_req, res) => {
-  res.json({ message: 'DevPulse API is running' });
+  res.json({ message: 'DevPulse API is running 🚀' });
 });
 
 // Routes
